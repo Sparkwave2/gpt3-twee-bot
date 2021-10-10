@@ -110,7 +110,7 @@ async def shirt_talk_on_message(message):
             response_text = await send_prompt(
                 prompt,
                 100,
-                shirt_talk_channels[message.channel.id]/50,
+                shirt_talk_channels[message.channel.id]/100,
                 ["\n"]
             )
         except (IndexError, KeyError):
@@ -213,7 +213,7 @@ async def shirt_reply_on_message(message):
             response_text = await send_prompt(
                 prompt,
                 100,
-                shirt_reply_channels[message.channel.id]/50,
+                shirt_reply_channels[message.channel.id]/100,
                 ["\n"]
             )
         except IndexError:
@@ -289,7 +289,7 @@ async def shirt_random_on_message(message):
             response_text = await send_prompt(
                 prompt,
                 100,
-                shirt_random_channels[message.channel.id][0]/50,
+                shirt_random_channels[message.channel.id][0]/100,
                 ["\n"]
             )
         except IndexError:
@@ -382,7 +382,7 @@ async def bot_trigger(
             response_text = await send_prompt(
                 prompt,
                 max_size,
-                randomness/50,
+                randomness/100,
                 ["\n"]
             )
         except (IndexError, KeyError):
@@ -413,7 +413,7 @@ async def bot_generate(
         try:
             response_text = await send_prompt(
                 text,
-                max_size, randomness/50,
+                max_size, randomness/100,
                 decrease_max=True,
                 first_line=False
             )
