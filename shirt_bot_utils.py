@@ -11,6 +11,7 @@ import discord
 from discord.ext import commands, tasks
 
 from encoder import encoder
+from aiohttp import TCPConnector
 
 # ################################
 # ### Bunch of Necessary Stuff ###
@@ -203,7 +204,7 @@ async def send_prompt(
     if stop is not None:
         datadict["stop"] = stop
     data = json.dumps(datadict, separators=(",", ":"))
-    async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(connector = TCPConnector(verify_ssl=False)) as session:
         async with session.post(URL, headers=HEADERS, data=data) as response:
             response_text = await response.text()
 
